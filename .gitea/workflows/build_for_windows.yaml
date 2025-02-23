@@ -30,7 +30,7 @@ jobs:
 
     - name: Build EXE using PyInstaller
       run: |
-        pyinstaller --onefile -p src -n QtTinySA QtTinySA.py --window --clean -y -i tinySA.ico --add-data "QtTSAprefs.db;."
+        pyinstaller --onefile -p src -n QtTinySA src/QtTinySA.py --window --clean -y -i tinySA.ico --add-data "src/QtTSAprefs.db;."
 
     - name: Upload the artifact
       uses: actions/upload-artifact@v3
