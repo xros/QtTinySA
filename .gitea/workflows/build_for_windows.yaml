@@ -30,8 +30,15 @@ jobs:
 
     - name: Build EXE using PyInstaller
       run: |
-        pyinstaller --onefile -p src -n QtTinySA src/QtTinySA.py --window --clean -y -i tinySA.ico --add-data "src/QtTSAprefs.db;."
-
+        cd src
+        pyinstaller --onefile -p src -n QtTinySA QtTinySA.py --window --clean -y -i tinySA.ico --add-data "QtTSAprefs.db;." --distpath ../dist
+    - name: Verify EXE exists
+      run: |
+        if [ ! -f "dist/QtTinySA.exe" ]; then
+          echo "EXE file not found!"
+          exit 1
+        fi
+        echo "EXE file found at dist/QtTinySA.exe"
     - name: Upload the artifact
       uses: actions/upload-artifact@v3
       with:
