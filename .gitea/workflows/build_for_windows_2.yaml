@@ -5,6 +5,12 @@ on:
     inputs:
       tags:
         description: 'windows latest'
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   pyinstaller-build:
